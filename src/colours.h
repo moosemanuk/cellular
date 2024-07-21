@@ -1,0 +1,8 @@
+#pragma once
+#include <raylib.h>
+
+const Color green = Color{255, 255, 255, 255};
+const Color background = Color{0x3A, 0x71, 0x89, 0xff};
+const Color inactivecell = Color{0x6C, 0x9C, 0x8C, 0xff};
+const Color activecell = Color{0xD1, 0xD2, 0xA8, 0xff};
+const Color sparecolour = Color{0xFE, 0xFA, 0xEA, 0xff};
