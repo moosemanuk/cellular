@@ -1,8 +1,5 @@
 #pragma once
 
-//const int SCREEN_WIDTH = 800;
-//const int SCREEN_HEIGHT = 400;
-
 const int SCREEN_WIDTH = 1500;
 const int SCREEN_HEIGHT = 750;
 
@@ -15,4 +12,4 @@ const int GRID_COLS = (int)(SCREEN_WIDTH / CELL_SIZE);
 
 const int GRID_FEATHER = 1;
 
-const unsigned long RULE = 185;
+const unsigned long RULE = 30;
