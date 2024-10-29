@@ -12,10 +12,10 @@ private:
 public:
     Grid();
     Grid(int initial);
-    void Draw();
+    void Draw() const;
     void InitialiseGrid(int initial);
     void SetValue(int row, int col, int value);
-    int GetValue(int row, int col);
+    int GetValue(int row, int col) const;
     void ProcessRule();
     int CalculateState(int left, int middle, int right);
     int counter;

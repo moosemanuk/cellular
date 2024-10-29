@@ -21,10 +21,11 @@ int main()
             DrawText("hello", SCREEN_HEIGHT/2, SCREEN_WIDTH/2, 20, BLACK);
         }
        
-        BeginDrawing();        
-        grid.Draw();
+        BeginDrawing();  
         ClearBackground(background);
-        EndDrawing();
+        grid.Draw();
+        
+        EndDrawing();        
     }
 
     CloseWindow();
