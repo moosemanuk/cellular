@@ -1,6 +1,5 @@
 #include "grid.h"
 #include <iostream>
-#include <bitset>
 
 Grid::Grid()
 {
@@ -53,7 +52,7 @@ void Grid::SetValue(int row, int col, int value)
     this->grid[row][col] = value;
 }
 
-int Grid::GetValue(int row, int col) const
+uint8_t Grid::GetValue(int row, int col) const
 {
     return grid[row][col];
 }
@@ -70,7 +69,7 @@ void Grid::ProcessRule()
 
             for (int col = 0; col < GRID_COLS; col++)
             {
-                int left, middle, right;
+                uint8_t left, middle, right;
                 if (col == 0)
                 {
                     left = grid[counter][GRID_COLS] - 1;
@@ -101,52 +100,21 @@ void Grid::ProcessRule()
     }
 }
 
-int Grid::CalculateState(int left, int middle, int right)
-{
-    std::string ruleset = std::bitset<8>(RULE).to_string();
-    if (left == 0 && middle == 0 && right == 0)
+uint8_t Grid::CalculateState(uint8_t left, uint8_t middle, uint8_t right)
+{    
+    int chunk = left << 2 | middle << 1 | right;
+    switch(chunk)
     {
-        // get first char from string, convert to integer, return
-        char ch = ruleset[7];
-        return ch - '0';
-    }
-    else if (left == 0 && middle == 0 && right == 1)
-    {
-        char ch = ruleset[6];
-        return ch - '0';
-    }
-    else if (left == 0 && middle == 1 && right == 0)
-    {
-        char ch = ruleset[5];
-        return ch - '0';
-    }
-    else if (left == 0 && middle == 1 && right == 1)
-    {
-        char ch = ruleset[4];
-        return ch - '0';
-    }
-    else if (left == 1 && middle == 0 && right == 0)
-    {
-        char ch = ruleset[3];
-        return ch - '0';
-    }
-    else if (left == 1 && middle == 0 && right == 1)
-    {
-        char ch = ruleset[2];
-        return ch - '0';
-    }
-    else if (left == 1 && middle == 1 && right == 0)
-    {
-        char ch = ruleset[1];
-        return ch - '0';
-    }
-    else if (left == 1 && middle == 1 && right == 1)
-    {
-        char ch = ruleset[0];
-        return ch - '0';
-    }
-    else
-    {
-        return 0;
+        case 0: return RULE & 0b00000001; break;
+        case 1: return (RULE >> 1) & 0b00000001; break;
+        case 2: return (RULE >> 2) & 0b00000001; break;
+        case 3: return (RULE >> 3) & 0b00000001; break;
+        case 4: return (RULE >> 4) & 0b00000001; break;
+        case 5: return (RULE >> 5) & 0b00000001; break;
+        case 6: return (RULE >> 6) & 0b00000001; break;
+        case 7: return (RULE >> 7) & 0b00000001; break;
+        default:
+            return 0;
+            break;
     }
 }

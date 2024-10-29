@@ -7,7 +7,7 @@
 class Grid
 {
 private:
-    int grid[GRID_ROWS][GRID_COLS];
+    uint8_t grid[GRID_ROWS][GRID_COLS];
 
 public:
     Grid();
@@ -15,9 +15,9 @@ public:
     void Draw() const;
     void InitialiseGrid(int initial);
     void SetValue(int row, int col, int value);
-    int GetValue(int row, int col) const;
+    uint8_t GetValue(int row, int col) const;
     void ProcessRule();
-    int CalculateState(int left, int middle, int right);
+    uint8_t CalculateState(uint8_t left, uint8_t middle, uint8_t right);
     int counter;
     bool drawing;
 };
