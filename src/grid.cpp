@@ -5,16 +5,6 @@
 Grid::Grid()
 {
     InitialiseGrid(0);
-    // //debug
-    // for(int i = 0 ; i < GRID_ROWS ; i++){
-    //     for(int j = 0 ; j < GRID_COLS ; j ++){
-    //         std::cout << grid[i][j] << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-
-    //  Checking this - the grid initialises correctly with all zeros
-
     counter = 0;
     drawing = true;
 }
@@ -37,7 +27,7 @@ void Grid::InitialiseGrid(int initial)
     }
 }
 
-void Grid::Draw()
+void Grid::Draw() const
 {
     for (int row = 0; row < GRID_ROWS; row++)
     {
@@ -46,10 +36,14 @@ void Grid::Draw()
             Color cellcolour = inactivecell;
             if (grid[row][col] == 1)
             {
-                // cellcolour = activecell;
-                cellcolour = sparecolour;
+                cellcolour = activecell;
+                //cellcolour = sparecolour;
             }
-            DrawRectangle(col * CELL_SIZE + 1, row * CELL_SIZE + 1, CELL_SIZE - GRID_FEATHER, CELL_SIZE - GRID_FEATHER, cellcolour);
+            DrawRectangle(col * CELL_SIZE + 1, 
+                          row * CELL_SIZE + 1, 
+                          CELL_SIZE - GRID_FEATHER, 
+                          CELL_SIZE - GRID_FEATHER, 
+                          cellcolour);
         }
     }
 }
@@ -59,7 +53,7 @@ void Grid::SetValue(int row, int col, int value)
     this->grid[row][col] = value;
 }
 
-int Grid::GetValue(int row, int col)
+int Grid::GetValue(int row, int col) const
 {
     return grid[row][col];
 }
@@ -74,7 +68,7 @@ void Grid::ProcessRule()
             grid[currentrow + 1][0] = grid[currentrow][0];
             grid[currentrow + 1][GRID_COLS - 1] = grid[currentrow][GRID_COLS - 1];
 
-            for (int col = 0; col < GRID_COLS - 1; col++)
+            for (int col = 0; col < GRID_COLS; col++)
             {
                 int left, middle, right;
                 if (col == 0)

@@ -7,24 +7,22 @@ int main()
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Simple Cellular Automaton");
     SetTargetFPS(TARGET_FPS);
 
-    Grid grid;
+    Grid* grid = new Grid();
 
-    grid.SetValue(0, (int)GRID_COLS / 2, 1);
+    grid->SetValue(0, (int)GRID_COLS / 2, 1);
 
     while (!WindowShouldClose())
     {
-        if (grid.drawing)
+        if (grid->drawing)
         {            
-            grid.ProcessRule();         
+            grid->ProcessRule();         
         }
-         if(IsMouseButtonDown(MOUSE_BUTTON_LEFT)){
-            DrawText("hello", SCREEN_HEIGHT/2, SCREEN_WIDTH/2, 20, BLACK);
-        }
-       
-        BeginDrawing();        
-        grid.Draw();
+        
+        BeginDrawing();  
         ClearBackground(background);
-        EndDrawing();
+        grid->Draw();
+        
+        EndDrawing();        
     }
 
     CloseWindow();
