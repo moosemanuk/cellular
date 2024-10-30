@@ -9,8 +9,12 @@ int main()
 
     Grid* grid = new Grid();
 
-    grid->SetValue(0, (int)GRID_COLS / 2, 1);
-
+    for (int i = 0; i < GRID_COLS - 1; i++)
+    {
+        int rand = GetRandomValue(0, 1);
+        grid->SetValue(0, i, rand);
+    }
+    
     while (!WindowShouldClose())
     {
         if (grid->drawing)
