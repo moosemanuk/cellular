@@ -9,11 +9,19 @@ int main()
 
     Grid* grid = new Grid();
 
-    for (int i = 0; i < GRID_COLS - 1; i++)
+    if (START_WITH_RANDOM_SEED)
     {
-        int rand = GetRandomValue(0, 1);
-        grid->SetValue(0, i, rand);
+        for (int i = 0; i < GRID_COLS - 1; i++)
+        {
+            int rand = GetRandomValue(0, 1);
+            grid->SetValue(0, i, rand);
+        }
     }
+    else
+    {
+        grid->SetValue(0, GRID_COLS / 2, 1);
+    }
+    
     
     while (!WindowShouldClose())
     {

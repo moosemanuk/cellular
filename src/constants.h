@@ -8,10 +8,12 @@ const int SCREEN_HEIGHT = 750;
 const int TARGET_FPS = 60;
 
 // I want this to be 2
-const int CELL_SIZE = 2;
+const int CELL_SIZE = 4;
 const int GRID_ROWS = (int)(SCREEN_HEIGHT / CELL_SIZE);
 const int GRID_COLS = (int)(SCREEN_WIDTH / CELL_SIZE);
 
 const int GRID_FEATHER = 1;
 
-const uint8_t RULE = 70;
+const bool START_WITH_RANDOM_SEED = false;
+
+const uint8_t RULE = 30;
